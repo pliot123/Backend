@@ -1,7 +1,6 @@
-package com.calisthenics.dragonhealth.room.controller;
+package com.calisthenics.dragonhealth.api.controller;
 
 import com.calisthenics.dragonhealth.room.model.dto.Room;
-import com.calisthenics.dragonhealth.room.model.service.RoomService;
 import com.calisthenics.dragonhealth.util.RandomNumberUtil;
 import io.openvidu.java.client.OpenVidu;
 import io.openvidu.java.client.OpenViduHttpException;
