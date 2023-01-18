@@ -7,6 +7,4 @@ import org.springframework.stereotype.Service;
 @Service
 public class RankingService {
 
-    private final UserRepository userRepository;
-
 }

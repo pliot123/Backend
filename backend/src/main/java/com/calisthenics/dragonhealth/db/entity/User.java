@@ -7,6 +7,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.awt.*;
+import java.sql.Blob;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -26,50 +28,25 @@ import java.util.Set;
 public class User implements UserDetails {
 
     @Id
-    @Column(name = "user_id")
+    @Column(name = "user_sequence")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId;
-
-    @Column(name = "nickname", length = 10)
-    private String nickname;
-
-    @Column(name = "email", length = 50, unique = true)
+    private Integer userSequence;
     private String email;
-
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @Column(name = "password", length = 200)
     private String password;
-
-    @Column(name = "is_tutorial_finished")
-    private boolean isTutorialFinished;
-
-    @JsonIgnore
-    @Column(name = "token")
-    private String token;
-
-    @Column(name = "img")
-    private String img;
-
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @Column(name = "auth_key")
-    private String authKey;
-
-    @Column(name = "auth_status")
-    private boolean authStatus;
-
-    private Time
-
-    @Column(name = "created_at", nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private Timestamp createdAt;
-
-
-    @Builder.Default
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "user_role",
-            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "role_id")})
-    private Set<Role> roles = new LinkedHashSet<>();
+    private String nickname;
+    private Integer gender;
+    @Column(name = "tel_no")
+    private String telNumber;
+    private Integer level;
+    private Float exp;
+    @Column(name = "manner_point")
+    private Float mannerPoint;
+    @Column(name = "min_clear_time")
+    private Time minClearTime;
+    @Column(name = "total_play_time")
+    private Time totalPlayTime;
+    @Column(name = "image_path")
+    private String imagePath;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -1,6 +1,6 @@
 package com.calisthenics.dragonhealth.db.repository;
 
-import com.calisthenics.homedong.db.entity.User;
+import com.calisthenics.dragonhealth.db.entity.User;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
