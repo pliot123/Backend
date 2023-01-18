@@ -1,16 +1,13 @@
-package com.calisthenics.dragonhealth.api.service;
+package com.backend.api.service;
 
-import com.calisthenics.dragonhealth.api.request.SignUpReq;
-import com.calisthenics.dragonhealth.db.entity.User;
-import com.calisthenics.dragonhealth.db.repository.UserRepository;
+import com.backend.api.request.SignUpReq;
+import com.backend.db.entity.User;
+import com.backend.db.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.net.UnknownHostException;
-
-import java.util.Collections;
 
 @Service
 public class UserService {

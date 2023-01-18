@@ -1,4 +1,4 @@
-package com.calisthenics.dragonhealth.api.request;
+package com.backend.api.request;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.calisthenics.dragonhealth.db.entity;
+package com.backend.db.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;

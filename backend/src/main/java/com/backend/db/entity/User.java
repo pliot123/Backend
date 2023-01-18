@@ -1,19 +1,12 @@
-package com.calisthenics.dragonhealth.db.entity;
+package com.backend.db.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.awt.*;
-import java.sql.Blob;
 import java.sql.Time;
-import java.sql.Timestamp;
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 /**
  * Created by Seo Youngeun on 2021-07-26

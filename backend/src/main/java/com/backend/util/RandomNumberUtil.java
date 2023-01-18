@@ -1,4 +1,4 @@
-package com.calisthenics.dragonhealth.util;
+package com.backend.util;
 
 import java.security.SecureRandom;
 import java.util.Date;
