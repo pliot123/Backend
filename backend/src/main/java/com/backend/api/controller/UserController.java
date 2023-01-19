@@ -68,7 +68,11 @@ public class UserController {
         }
     }
 
+    @DeleteMapping("/user/{userSequence}")
+    public ResponseEntity deleteUser( @PathVariable int userSequence){
+        System.out.println("안들어오노 ㅠ");
+        userService.deleteUser(userSequence);
 
-
-
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

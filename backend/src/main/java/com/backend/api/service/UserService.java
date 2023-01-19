@@ -71,4 +71,11 @@ public class UserService {
         }
         return true;
     }
+
+
+    @Transactional
+    public void deleteUser(int userSequence) {
+        System.out.println(userSequence);
+        userRepository.deleteByUserSequence(userSequence);
+    }
 }
