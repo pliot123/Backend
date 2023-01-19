@@ -28,7 +28,7 @@ public class User implements UserDetails {
     private String password;
     private String nickname;
     private Integer gender;
-    @Column(name = "tel_no")
+    @Column(name = "tel_number")
     private String telNumber;
     private Integer level;
     private Float exp;
@@ -38,7 +38,7 @@ public class User implements UserDetails {
     private Time minClearTime;
     @Column(name = "total_play_time")
     private Time totalPlayTime;
-    @Column(name = "image_path")
+    @Column(name = "profile_image_path")
     private String imagePath;
 
     @Override

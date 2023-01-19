@@ -20,12 +20,16 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http.antMatcher("/**").csrf().disable()
-                .httpBasic().and().build();
+        http.authorizeRequests()
+                .antMatchers("/**").permitAll()
+                .antMatchers("/signup").permitAll();
+        http.csrf().disable();
 //    @Bean
 //    PasswordEncoder passwordEncoder(){
 //        return new BCryptPasswordEncoder();
 //    }
+        return http.build();
     }
 
 }
+

@@ -11,10 +11,12 @@ import java.net.UnknownHostException;
 
 @Service
 public class UserService {
+
     private final UserRepository userRepository;
 
     @Autowired
     public UserService(UserRepository userRepository) {
+
         this.userRepository = userRepository;
     }
 
@@ -45,5 +47,28 @@ public class UserService {
         //작업 넣어주고 userSeuqence빼주고 사진을 넣어주면
         //imgpath sequnce바탕으로 경로 짜줘야함
         return userRepository.save(user);
+    }
+
+
+    public User findUserByEmail(String email) {
+        User user = userRepository.findOneByEmail(email);
+        return user;
+    }
+
+    public Boolean checkDuplicateEmail(String email){
+        System.out.println(userRepository.findAllByEmail(email).size());
+        if(userRepository.findAllByEmail(email).size() > 0) {
+            System.out.println("dkdkdk");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean checkDuplicateNickname(String nickname) {
+        if(userRepository.
+                findAllByNickname(nickname).size() > 0) {
+            return false;
+        }
+        return true;
     }
 }
