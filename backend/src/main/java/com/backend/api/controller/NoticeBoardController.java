@@ -17,7 +17,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/board")
+@RequestMapping("/notice")
 public class NoticeBoardController {
 
     private final NoticeService noticeService;
@@ -28,21 +28,21 @@ public class NoticeBoardController {
     }
 
 
-    @PostMapping("/notice")
+    @PostMapping
     public ResponseEntity write(@RequestBody WriteReq writeReq){
         noticeService.writeNotice(writeReq);
 
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @GetMapping("/notice/{noticeSequence}")
+    @GetMapping("/{noticeSequence}")
     public ResponseEntity<?> detail(@PathVariable Integer noticeSequence){
         NoticeBoard noticeBoard = noticeService.getOne(noticeSequence);
         return new ResponseEntity<NoticeBoard>(noticeBoard,HttpStatus.OK);
     }
 
     @Transactional
-    @PutMapping("/notice")
+    @PutMapping
     public ResponseEntity<?> modify(@RequestBody BoardPostReq boardPostReq){
         NoticeBoard cur =  noticeService.getOne(boardPostReq.getNoticeSequence());
         noticeService.modify(cur,boardPostReq);
@@ -50,7 +50,7 @@ public class NoticeBoardController {
     }
 
     @Transactional
-    @DeleteMapping("/notice/{noticeSequence}")
+    @DeleteMapping("/{noticeSequence}")
     public ResponseEntity<?> delete(@PathVariable Integer noticeSequence){
         int flag = noticeService.delete(noticeSequence);
         if(flag==1)
@@ -59,7 +59,7 @@ public class NoticeBoardController {
             return new ResponseEntity("삭제 실패",HttpStatus.OK);
     }
 
-    @GetMapping("/notice")
+    @GetMapping
     public List<NoticeBoard> getList(){
         List<NoticeBoard> boardList = noticeService.getAllList();
         return boardList;

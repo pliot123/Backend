@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.time.LocalTime;
 
 @Entity
 @Data
@@ -20,11 +22,13 @@ public class NoticeComment {
     private Integer commentSequence;
     @Column(name = "notice_sequence")
     private Integer noticeSequence;
+    private String title;
     private String nickname;
     private String contents;
     @Column(name = "good_count")
     private Integer goodCount;
     @Column(name = "open_close")
     private Integer open;
+    private String registerTime;
 
 }

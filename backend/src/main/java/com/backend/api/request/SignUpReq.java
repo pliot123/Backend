@@ -1,11 +1,14 @@
 package com.backend.api.request;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
-@Data
+@Getter
+@NoArgsConstructor
 public class SignUpReq {
 
     @Email(message = "이메일 형식이 아닙니다.")
