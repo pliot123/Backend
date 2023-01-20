@@ -1,5 +1,6 @@
 package com.backend.api.controller;
 
+import com.backend.api.request.BoardPostReq;
 import com.backend.api.request.WriteReq;
 import com.backend.api.service.NoticeService;
 import com.backend.db.entity.NoticeBoard;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +33,30 @@ public class NoticeBoardController {
         noticeService.writeNotice(writeReq);
 
         return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @GetMapping("/notice/{noticeSequence}")
+    public ResponseEntity<?> detail(@PathVariable Integer noticeSequence){
+        NoticeBoard noticeBoard = noticeService.getOne(noticeSequence);
+        return new ResponseEntity<NoticeBoard>(noticeBoard,HttpStatus.OK);
+    }
+
+    @Transactional
+    @PutMapping("/notice")
+    public ResponseEntity<?> modify(@RequestBody BoardPostReq boardPostReq){
+        NoticeBoard cur =  noticeService.getOne(boardPostReq.getNoticeSequence());
+        noticeService.modify(cur,boardPostReq);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @Transactional
+    @DeleteMapping("/notice/{noticeSequence}")
+    public ResponseEntity<?> delete(@PathVariable Integer noticeSequence){
+        int flag = noticeService.delete(noticeSequence);
+        if(flag==1)
+            return new ResponseEntity("삭제 완료",HttpStatus.OK);
+        else
+            return new ResponseEntity("삭제 실패",HttpStatus.OK);
     }
 
     @GetMapping("/notice")

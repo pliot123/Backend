@@ -1,19 +1,21 @@
 package com.backend.db.entity;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Time;
 import java.sql.Timestamp;
 
+
+@Entity
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name ="notice_board")
 public class NoticeBoard {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "notice_sequence")
     private Integer noticeSequence;
 
