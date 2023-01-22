@@ -3,7 +3,6 @@ package com.backend.db.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Time;
 import java.sql.Timestamp;
 
 
@@ -12,12 +11,12 @@ import java.sql.Timestamp;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name ="notice_board")
-public class NoticeBoard {
+@Table(name ="board")
+public class BoardArticle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "notice_sequence")
-    private Integer noticeSequence;
+    @Column(name = "article_sequence")
+    private Integer articleSequence;
 
     @Column(name = "user_sequence")
     private Integer userSequence;
@@ -35,4 +34,7 @@ public class NoticeBoard {
     private Integer views;
 
     private Integer hearts;
+
+    private Integer div;
+
 }

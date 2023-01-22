@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 public class BoardPostReq {
-    private Integer noticeSequence;
+    private Integer articleSequence;
     private String title;
     private String contents;
     @LastModifiedDate

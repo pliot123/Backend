@@ -6,22 +6,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.time.LocalTime;
 
 @Entity
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name ="notice_comment")
-public class NoticeComment {
+@Table(name ="comment")
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comment_sequence")
     private Integer commentSequence;
-    @Column(name = "notice_sequence")
-    private Integer noticeSequence;
+
+    @Column(name = "article_sequence")
+    private Integer articleSequence;
     private String title;
     private String nickname;
     private String contents;
