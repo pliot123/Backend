@@ -36,10 +36,12 @@ public class FriendController {
             friendService.accept(send,get);
             friendService.delete(send,get);
         }else{//친구 요청을 거절 했을 때+친구 대기목록에서 삭제
-
+            friendService.delete(send,get);
         }
 
         return new ResponseEntity(HttpStatus.OK);
     }
+
+
 
 }

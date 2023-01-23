@@ -23,7 +23,7 @@ public class BoardService {
 
 
     @Transactional
-    public List<BoardArticle> getAllList() {
+    public List<BoardArticle> getAllList(Integer userSequence) {
 
         List<BoardArticle> test = boardRepository.findAll();
         return boardRepository.findAll();
@@ -32,6 +32,8 @@ public class BoardService {
     @Transactional
     public BoardArticle getOne(Integer articleSeqeunce) {
 
+        BoardArticle boardArticle = boardRepository.findOneByArticleSequence(articleSeqeunce);
+        boardRepository.save(boardArticle);
         return boardRepository.findOneByArticleSequence(articleSeqeunce);
     }
 

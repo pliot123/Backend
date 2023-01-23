@@ -3,6 +3,7 @@ package com.backend.api.controller;
 import com.backend.api.request.BoardPostReq;
 import com.backend.api.request.WriteReq;
 import com.backend.api.service.BoardService;
+import com.backend.api.service.GoodService;
 import com.backend.db.entity.BoardArticle;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,12 @@ import java.util.List;
 public class BoardController {
 
     private final BoardService boardService;
+    private final GoodService goodService;
 
     @Autowired
-    public BoardController(BoardService boardService) {
+    public BoardController(BoardService boardService,GoodService goodService) {
         this.boardService = boardService;
+        this.goodService =goodService;
     }
 
 
@@ -57,9 +60,16 @@ public class BoardController {
             return new ResponseEntity("삭제 실패",HttpStatus.OK);
     }
 
-    @GetMapping
-    public List<BoardArticle> getList(){
-        List<BoardArticle> boardList = boardService.getAllList();
+    @GetMapping("/{userSequence}")
+    public List<BoardArticle> getList(@PathVariable Integer userSequence){
+        List<BoardArticle> boardList = boardService.getAllList(userSequence);
         return boardList;
+    }
+
+    @GetMapping("/good/{userSequence}/{articleSequence}")
+    public ResponseEntity<?> boardGood(@PathVariable Integer userSequence,@PathVariable Integer articleSequence){
+        int flag = goodService.findBoardGood(userSequence,articleSequence);
+        System.out.println(flag);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

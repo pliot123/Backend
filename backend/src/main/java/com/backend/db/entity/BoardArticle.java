@@ -33,7 +33,8 @@ public class BoardArticle {
 
     private Integer views;
 
-    private Integer hearts;
+    @Column(name = "good_count")
+    private Integer goodCount;
 
     private Integer div;
 

@@ -24,8 +24,10 @@ public class Comment {
     private String title;
     private String nickname;
     private String contents;
+
     @Column(name = "good_count")
     private Integer goodCount;
+
     @Column(name = "open_close")
     private Integer open;
     private String registerTime;
