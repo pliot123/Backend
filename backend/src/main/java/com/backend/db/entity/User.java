@@ -6,7 +6,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Seo Youngeun on 2021-07-26
@@ -40,6 +42,9 @@ public class User implements UserDetails {
     private Time totalPlayTime;
     @Column(name = "profile_image_path")
     private String imagePath;
+
+    @OneToMany(mappedBy = "User", cascade = CascadeType.ALL)
+    private List<Attachment> attachedFiles = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

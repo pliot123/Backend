@@ -5,6 +5,7 @@ import com.backend.api.request.WriteReq;
 import com.backend.api.service.BoardService;
 import com.backend.api.service.GoodService;
 import com.backend.db.entity.BoardArticle;
+import com.backend.db.entity.BoardGood;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -68,8 +69,13 @@ public class BoardController {
 
     @GetMapping("/good/{userSequence}/{articleSequence}")
     public ResponseEntity<?> boardGood(@PathVariable Integer userSequence,@PathVariable Integer articleSequence){
-        int flag = goodService.findBoardGood(userSequence,articleSequence);
+        BoardGood flag = goodService.findBoardGood(userSequence,articleSequence);
         System.out.println(flag);
+        if(flag==null){
+            //null이면 등록하고
+            goodService.addGoodBoard(userSequence,articleSequence);
+            boardService.addGoodArticle(articleSequence);
+        }
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

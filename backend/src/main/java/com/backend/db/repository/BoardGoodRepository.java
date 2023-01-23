@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface BoardGoodRepository extends JpaRepository<BoardGood,String> {
 
     @Query("SELECT m from BoardGood m where m.userSequence=:userSequence AND m.articleSequence=:articleSequence")
-    int findByUserSequenceAndArticleSequence(Integer userSequence, Integer articleSequence);
+    BoardGood findByUserSequenceAndArticleSequence(Integer userSequence, Integer articleSequence);
 
 }

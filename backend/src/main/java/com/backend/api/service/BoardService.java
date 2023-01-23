@@ -60,4 +60,9 @@ public class BoardService {
                 .contents(boardPostReq.getContents()).build();
         boardRepository.save(cur);
     }
+
+    public void addGoodArticle(Integer articleSequence) {
+        BoardArticle cur = boardRepository.findOneByArticleSequence(articleSequence);
+        cur = BoardArticle.builder().goodCount(cur.getGoodCount()+1).build();
+    }
 }
